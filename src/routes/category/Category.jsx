@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { Fragment, useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { CategoriesContext } from "../../contexts/CategoriesContext";
 import ProductCard from "../../components/product-card/ProductCard";
@@ -13,10 +13,14 @@ export default function Category() {
   }, [category, categoriesMap]);
 
   return (
-    <div className="category-container">
-      {products && products.map((product) => (
-        <ProductCard key={product.id} product={product} />
-      ))}
-    </div>
+    <Fragment>
+      <h2 className="category-title">{category.toLocaleUpperCase()}</h2>
+      <div className="category-container">
+        {products &&
+          products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+      </div>
+    </Fragment>
   );
 }
