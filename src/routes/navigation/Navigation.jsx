@@ -4,6 +4,8 @@ import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
 import "./navigation.styles.scss";
 import { UserContext } from "../../contexts/UserContext";
 import { signOutUser } from "../../utils/firebase/firebase";
+import CartIcon from "../../components/cart-icon/CartIcon";
+import CartDropdown from "../../components/cart-dropdown/CartDropdown";
 
 export default function Navigation() {
   const { currentUser } = useContext(UserContext);
@@ -18,6 +20,7 @@ export default function Navigation() {
           <Link className="nav-link" to="/shop">
             Shop
           </Link>
+
           {currentUser ? (
             <span className="nav-link" onClick={signOutUser}>
               Sign Out
@@ -27,7 +30,10 @@ export default function Navigation() {
               Sign In
             </Link>
           )}
+
+          <CartIcon />
         </div>
+        <CartDropdown />
       </div>
       <Outlet />
     </Fragment>
