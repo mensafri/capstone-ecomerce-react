@@ -4,15 +4,13 @@ import {
   onAuthStateChangedListener,
 } from "../utils/firebase/firebase";
 import createAction from "../utils/reducer/reducer.utils";
+import { USER_ACTION_TYPE } from "../store/user/user.types";
 
 export const UserContext = createContext({
   currentUser: null,
   setCurrentUser: () => null,
 });
 
-export const USER_ACTION_TYPE = {
-  SET_CURRENT_USER: "SET_CURRENT_USER",
-};
 
 const userReducer = (state, action) => {
   const { type, payload } = action;
