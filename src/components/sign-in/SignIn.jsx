@@ -1,12 +1,17 @@
 import React, { useState } from "react";
-import {
-  signInWithGooglePopup,
-  // createUserDocumentFromAuth,
-  signInAuthUserWithEmailAndPassword,
-} from "../../utils/firebase/firebase";
+// import {
+//   signInWithGooglePopup,
+//   createUserDocumentFromAuth,
+//   signInAuthUserWithEmailAndPassword,
+// } from "../../utils/firebase/firebase";
 import FormInput from "../form-input/FormInput";
 import "./sign-in-form.styles.scss";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/Button";
+import { useDispatch } from "react-redux";
+import {
+  emailSignInStart,
+  googleSignInStart,
+} from "../../store/user/user.action";
 
 const defaultFormFields = {
   email: "",
@@ -14,6 +19,7 @@ const defaultFormFields = {
 };
 
 export default function SignIn() {
+  const dispatch = useDispatch();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
@@ -22,14 +28,16 @@ export default function SignIn() {
   };
 
   const signInWithGoogle = async () => {
-    await signInWithGooglePopup();
+    dispatch(googleSignInStart());
+    // await signInWithGooglePopup();
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      await signInAuthUserWithEmailAndPassword(email, password);
+      // await signInAuthUserWithEmailAndPassword(email, password);
+      dispatch(emailSignInStart(email, password));
       resetFormFields();
     } catch (error) {
       switch (error.code) {
