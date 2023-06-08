@@ -5,20 +5,21 @@ import Authentication from "./routes/authentication/Authentication";
 import Shop from "./routes/shop/Shop";
 import Checkout from "./routes/checkout/Checkout";
 import { useEffect } from "react";
-import {
-  createUserDocumentFromAuth,
-  getCurrentUser,
-  onAuthStateChangedListener,
-} from "./utils/firebase/firebase";
-import { setCurrentUser } from "./store/user/user.action";
+// import {
+//   createUserDocumentFromAuth,
+//   getCurrentUser,
+//   onAuthStateChangedListener,
+// } from "./utils/firebase/firebase";
+// import { setCurrentUser } from "./store/user/user.action";
 import { useDispatch } from "react-redux";
+import { checkUserSession } from "./store/user/user.action";
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-
-    getCurrentUser()
+    dispatch(checkUserSession());
+    // getCurrentUser()
     // const unsubscribe = onAuthStateChangedListener((user) => {
     //   if (user) {
     //     createUserDocumentFromAuth(user);
@@ -26,7 +27,7 @@ const App = () => {
     //   dispatch(setCurrentUser(user));
     // });
     // return unsubscribe;
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
