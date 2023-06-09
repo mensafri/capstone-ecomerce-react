@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { CartContext } from "../../contexts/CartContext";
+// import { CartContext } from "../../contexts/CartContext";
 import {
   addItemToCart,
   clearItemFromCart,
