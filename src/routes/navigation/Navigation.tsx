@@ -8,7 +8,7 @@ import {
   NavLink,
 } from "./navigation.styles";
 // import { UserContext } from "../../contexts/UserContext";
-import { signOutUser } from "../../utils/firebase/firebase";
+// import { signOutUser } from "../../utils/firebase/firebase";
 import CartIcon from "../../components/cart-icon/CartIcon";
 import CartDropdown from "../../components/cart-dropdown/CartDropdown";
 // import { CartContext } from "../../contexts/CartContext";

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 // import {
 //   signInWithGooglePopup,
 //   createUserDocumentFromAuth,
@@ -32,7 +32,7 @@ export default function SignIn() {
     // await signInWithGooglePopup();
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
@@ -40,7 +40,7 @@ export default function SignIn() {
       dispatch(emailSignInStart(email, password));
       resetFormFields();
     } catch (error) {
-      switch (error.code) {
+      switch (error) {
         case "auth/wrong-password":
           alert("Password salah ndes");
           break;
@@ -53,7 +53,7 @@ export default function SignIn() {
     }
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
     setFormFields({ ...formFields, [name]: value });

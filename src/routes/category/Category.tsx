@@ -6,8 +6,12 @@ import "./category.styles.scss";
 import { useSelector } from "react-redux";
 import { selectCategoriesMap } from "../../store/categories/category.selector";
 
+type CategoryRouteParams = {
+  category: string;
+};
+
 export default function Category() {
-  const { category } = useParams();
+  const { category } = useParams<CategoryRouteParams>() as CategoryRouteParams;
   // const { categoriesMap } = useContext(CategoriesContext);
   const categoriesMap = useSelector(selectCategoriesMap);
   const [products, setProducts] = useState(categoriesMap[category]);
